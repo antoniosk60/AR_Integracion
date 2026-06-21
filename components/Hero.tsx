@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'motion/react';
+import { getImageUrl, handleImageError } from '../types';
 
 const Hero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -38,15 +39,13 @@ const Hero: React.FC = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [mouseX, mouseY]);
 
-  const GITHUB_IMG_BASE = 'https://raw.githubusercontent.com/antoniosk60/IMGAR/main/img/';
-
   return (
     <div ref={containerRef} className="relative h-screen min-h-[800px] flex items-center overflow-hidden bg-slate-950">
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-0">
         <motion.div 
           style={{ 
-            backgroundImage: `url('${GITHUB_IMG_BASE}input_file_0.png')`,
+            backgroundImage: `url('${getImageUrl("input_file_0.png")}')`,
             y: backgroundY
           }}
           className="absolute inset-0 bg-cover bg-center opacity-60 scale-110"
@@ -122,10 +121,10 @@ const Hero: React.FC = () => {
               <div className="relative glass-card p-8 rounded-3xl border border-white/20">
                 <div className="aspect-[4/5] rounded-2xl overflow-hidden mb-6">
                   <img 
-                    src={`${GITHUB_IMG_BASE}input_file_15.png`} 
+                    src={getImageUrl("input_file_15.png")} 
                     className="w-full h-full object-cover"
                     alt="Ingeniería Civil"
-                    onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800' }}
+                    onError={(e) => handleImageError(e, 'Construcciones')}
                   />
                 </div>
                 <div className="flex justify-between items-end">

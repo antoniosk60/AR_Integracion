@@ -3,7 +3,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 import { HardHat, CheckCircle2, ArrowRight } from 'lucide-react';
-import { getImageUrl } from '../types';
+import { getImageUrl, handleImageError } from '../types';
 
 const Construcciones: React.FC = () => {
   const gallery = [
@@ -45,6 +45,7 @@ const Construcciones: React.FC = () => {
             src={getImageUrl("input_file_0.png")} 
             className="w-full h-full object-cover opacity-40"
             alt="Construcciones"
+            onError={(e) => handleImageError(e, 'Construcciones')}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/40 to-slate-950"></div>
         </div>
@@ -140,6 +141,7 @@ const Construcciones: React.FC = () => {
                     src={getImageUrl(item.url)} 
                     alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    onError={(e) => handleImageError(e, 'Construcciones')}
                   />
                 </div>
                 <div className="p-8">

@@ -1,8 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Project } from '../types';
-
-const GITHUB_IMG_BASE = 'https://raw.githubusercontent.com/antoniosk60/IMGAR/main/img/';
+import { Project, getImageUrl, handleImageError } from '../types';
 
 const projects: Project[] = [
   { 
@@ -236,10 +234,10 @@ const Portfolio: React.FC = () => {
           >
             <div className="aspect-[16/11] overflow-hidden relative">
               <img 
-                src={project.imageUrl} 
+                src={getImageUrl(project.imageUrl)} 
                 alt={project.title}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800' }}
+                onError={(e) => handleImageError(e, project.category)}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
                 <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
@@ -281,7 +279,12 @@ const Portfolio: React.FC = () => {
 
             {/* Media Side */}
             <div className="lg:w-7/12 relative h-[40vh] lg:h-auto overflow-hidden bg-slate-100">
-              <img src={selectedProject.imageUrl} alt={selectedProject.title} className="w-full h-full object-cover" />
+              <img 
+                src={getImageUrl(selectedProject.imageUrl)} 
+                alt={selectedProject.title} 
+                className="w-full h-full object-cover"
+                onError={(e) => handleImageError(e, selectedProject.category)}
+              />
               <div className="absolute inset-0 bg-gradient-to-r from-slate-950/20 to-transparent pointer-events-none"></div>
             </div>
 

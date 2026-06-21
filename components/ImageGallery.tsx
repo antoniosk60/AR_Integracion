@@ -14,6 +14,7 @@ import {
   Calendar,
   Building2
 } from 'lucide-react';
+import { getImageUrl, handleImageError } from '../types';
 
 interface GalleryItem {
   id: string;
@@ -28,123 +29,203 @@ interface GalleryItem {
 
 const galleryProjects: GalleryItem[] = [
   {
-    id: "g-1",
-    title: "Corporativo Paseo de la Reforma",
+    id: "g-0",
+    title: "Fachada Arquitectónica Moderna",
     category: "Construcciones",
     location: "Sinaloa, México",
     year: 2025,
-    description: "Diseño estructural avanzado y acabados monumentales con louvers térmicos de aluminio.",
-    imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
-    aspect: "portrait"
-  },
-  {
-    id: "g-2",
-    title: "Residencia Lomas de Chapultepec",
-    category: "Remodelaciones",
-    location: "CDMX, México",
-    year: 2026,
-    description: "Proyecto de remodelación interior premium con acabados en mármol Calacatta e iluminación indirecta sintonizable.",
-    imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+    description: "Detalle exterior de fachada residencial con juego de volúmenes geométricos, cantera clara e iluminación LED rasante.",
+    imageUrl: "input_file_0.png",
     aspect: "landscape"
   },
   {
-    id: "g-3",
-    title: "Peinado de Tableros Eléctricos Toluca",
-    category: "Electricidad",
-    location: "Edo. de México, México",
-    year: 2025,
-    description: "Configuración, peinado de alta densidad y balanceo dinámico de cargas en planta de manufactura automotriz.",
-    imageUrl: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80",
+    id: "g-1",
+    title: "Nivelado y Pulido de Firmes",
+    category: "Construcciones",
+    location: "Monterrey, N.L.",
+    year: 2024,
+    description: "Preparación estructural de firmes de concreto lavado y pulido de alto tráfico mecánico en bodegas industriales.",
+    imageUrl: "input_file_1.png",
     aspect: "square"
   },
   {
+    id: "g-2",
+    title: "Blindaje de Canalizaciones Eléctricas",
+    category: "Electricidad",
+    location: "CDMX, México",
+    year: 2025,
+    description: "Tendido de tuberías conduit galvanizadas con curvas perfectas de peinado y caja de paso en site industrial.",
+    imageUrl: "input_file_2.png",
+    aspect: "portrait"
+  },
+  {
+    id: "g-3",
+    title: "Peinado de Redes e Infraestructura",
+    category: "Telecomunicaciones",
+    location: "CDMX, México",
+    year: 2026,
+    description: "Montaje y ordenamiento estético de cables UTP Cat6 en rack de telecomunicaciones con balanceador de carga.",
+    imageUrl: "input_file_3.png",
+    aspect: "landscape"
+  },
+  {
     id: "g-4",
-    title: "Cimentación de Nave Industrial",
+    title: "Cimentación y Vaciado de Losas",
     category: "Construcciones",
-    location: "Monterrey, Nuevo León",
+    location: "Guadalajara, Jal.",
     year: 2024,
-    description: "Estudio de suelo estructural y vaciado continuo de vigas de concreto de alta resistencia sísmica.",
-    imageUrl: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80",
+    description: "Armado de varillas de acero estructural de alta resistencia y herrajes para vaciado de cimientos.",
+    imageUrl: "input_file_4.png",
     aspect: "landscape"
   },
   {
     id: "g-5",
-    title: "Impermeabilización Elastomérica Querétaro",
-    category: "Impermeabilización",
-    location: "Querétaro, Qro.",
+    title: "Cargador Inteligente Tesla Wall Connector",
+    category: "Electricidad",
+    location: "CDMX, México",
     year: 2026,
-    description: "Sistemas reflectivos premium de poliuretano reduciendo hasta 5 grados centígrados la temperatura interna.",
-    imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
+    description: "Línea dedicada trifásica con protecciones termomagnéticas sobredimensionadas instalada para electromovilidad Tesla.",
+    imageUrl: "input_file_5.png",
     aspect: "portrait"
   },
   {
     id: "g-6",
-    title: "Plafón Acústico San Pedro",
-    category: "Remodelaciones",
-    location: "San Pedro Garza García, N.L.",
+    title: "Interruptores y Centros de Carga",
+    category: "Electricidad",
+    location: "Toluca, Edo. Méx.",
     year: 2025,
-    description: "Montaje e integración de luminarias empotradas lineales y plafón suspendido de alta absorción acústica.",
-    imageUrl: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80",
-    aspect: "landscape"
+    description: "Peinado de alta precisión y distribución termomagnética de cargas en cuarto eléctrico principal.",
+    imageUrl: "input_file_6.png",
+    aspect: "square"
   },
   {
     id: "g-7",
-    title: "Subestación Tipo Pedestal 500 kVA",
-    category: "Electricidad",
-    location: "Guadalajara, Jalisco",
-    year: 2025,
-    description: "Pruebas de resistencia de aislamiento y blindaje de tierras físicas según normativo NOM-001-SEDE.",
-    imageUrl: "https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?auto=format&fit=crop&w=1200&q=80",
-    aspect: "square"
-  },
-  {
-    id: "g-8",
-    title: "Villa Residencial Chukum",
+    title: "Arrancadores de Bombeo Monofásicos",
     category: "Construcciones",
-    location: "Tulum, Quintana Roo",
-    year: 2026,
-    description: "Obra de muros curvos en pasta fina Chukum natural integrando ingenierías de consumo sustentable.",
-    imageUrl: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
+    location: "CDMX, México",
+    year: 2025,
+    description: "Gabinetes automáticos IP65 para control de cisterna y redundancia del sistema hidroneumático de presión constante.",
+    imageUrl: "input_file_7.png",
     aspect: "portrait"
   },
   {
-    id: "g-9",
-    title: "Sistemas de Enrutamiento WiFi 6",
-    category: "Telecomunicaciones",
-    location: "Santa Fe, CDMX",
-    year: 2026,
-    description: "Site principal de datos con redundancia por fibra óptica e instalación de domos exteriores CCTV 4K.",
-    imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+    id: "g-8",
+    title: "Fijación de Transformador de Pedestal",
+    category: "Construcciones",
+    location: "Toluca, Edo. Méx.",
+    year: 2024,
+    description: "Instalación y anclaje sobre base de concreto reforzado con pernos niveladores de alta resistencia sísmica.",
+    imageUrl: "input_file_8.png",
     aspect: "landscape"
   },
   {
-    id: "g-10",
-    title: "Manto Prefabricado con Gravilla SBS",
-    category: "Impermeabilización",
-    location: "Coatzacoalcos, Veracruz",
+    id: "g-9",
+    title: "Peinado de Tablero Trifásico",
+    category: "Electricidad",
+    location: "Querétaro, Qro.",
     year: 2025,
-    description: "Fusión con soplete de membranas modificadas contra salitre y humedad extrema en costa.",
-    imageUrl: "https://images.unsplash.com/photo-1534237176120-b75d3db82275?auto=format&fit=crop&w=1200&q=80",
+    description: "Balanceo estricto del centro de carga residencial, organizando neutros y tierras físicas según el normativo NOM-001.",
+    imageUrl: "input_file_9.png",
     aspect: "square"
   },
   {
-    id: "g-11",
-    title: "Adecuación Eléctrica para Tesla Chargers",
-    category: "Electricidad",
-    location: "Polanco, CDMX",
-    year: 2026,
-    description: "Canalizaciones blindadas y balanceador automático dinámico de potencia residencial.",
-    imageUrl: "https://images.unsplash.com/photo-1513828729027-d4f3b25f9b48?auto=format&fit=crop&w=1200&q=80",
+    id: "g-10",
+    title: "Limpieza Previa de Losa",
+    category: "Impermeabilización",
+    location: "Monterrey, N.L.",
+    year: 2024,
+    description: "Remoción total con hidrolavadora a presión de contaminantes y recubrimientos viejos antes de impermeabilizar.",
+    imageUrl: "input_file_10.png",
     aspect: "landscape"
   },
   {
-    id: "g-12",
-    title: "Cocina Corporativa Acabado Roble",
-    category: "Remodelaciones",
-    location: "San Luis Potosí, SLP",
+    id: "g-11",
+    title: "Aplicación de Base Autoadherible",
+    category: "Impermeabilización",
+    location: "Puebla, Pue.",
     year: 2025,
-    description: "Detalle de carpintería fina modular integrada en herrajes invisibles con acabado de laca premium anti-rayas.",
-    imageUrl: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1200&q=80",
+    description: "Emulsión asfáltica de liga sobre bajadas de agua pluvial para afianzar total estanqueidad hidráulica.",
+    imageUrl: "input_file_11.png",
+    aspect: "portrait"
+  },
+  {
+    id: "g-12",
+    title: "Tendido de Membrana de Refuerzo",
+    category: "Impermeabilización",
+    location: "Querétaro, Qro.",
+    year: 2025,
+    description: "Colocación manual y estirado simétrico de malla de poliéster de gran gramaje para evitar agrietamientos elásticos.",
+    imageUrl: "input_file_12.png",
+    aspect: "square"
+  },
+  {
+    id: "g-13",
+    title: "Recubrimiento Criogénico Reflectivo",
+    category: "Impermeabilización",
+    location: "Coatzacoalcos, Ver.",
+    year: 2026,
+    description: "Última capa de impermeabilizante acrílico color blanco, optimizando la reflectancia solar y reduciendo la isla de calor.",
+    imageUrl: "input_file_13.png",
+    aspect: "landscape"
+  },
+  {
+    id: "g-14",
+    title: "Fusión de Soplete en Manto Prefabricado",
+    category: "Impermeabilización",
+    location: "Guadalajara, Jal.",
+    year: 2024,
+    description: "Sellado por fusión térmica con gas LP de solapes en rollos asfálticos con gravilla integrada de altísima durabilidad.",
+    imageUrl: "input_file_14.png",
+    aspect: "square"
+  },
+  {
+    id: "g-15",
+    title: "Remodelación de Cocina Las Lomas",
+    category: "Remodelaciones",
+    location: "Monterrey, N.L.",
+    year: 2025,
+    description: "Acabados de carpintería fina empotrada con herrajes invisibles push-to-open e isla central en granito oscuro.",
+    imageUrl: "input_file_15.png",
+    aspect: "landscape"
+  },
+  {
+    id: "g-16",
+    title: "Estructuras de Plafón con Backlight",
+    category: "Remodelaciones",
+    location: "CDMX, México",
+    year: 2026,
+    description: "Montaje suspendido de cajillos de yeso panel con ranuras simétricas para alojar tiras LED de luz cálida.",
+    imageUrl: "input_file_16.png",
+    aspect: "portrait"
+  },
+  {
+    id: "g-17",
+    title: "Remodelación de Sanitario Premium",
+    category: "Remodelaciones",
+    location: "CDMX, México",
+    year: 2025,
+    description: "Diseño minimalista con doble ovalín con grifos empotrados en cantera gris y repisas flotantes chic.",
+    imageUrl: "input_file_17.png",
+    aspect: "square"
+  },
+  {
+    id: "g-18",
+    title: "Muros Modulares de Madera",
+    category: "Remodelaciones",
+    location: "CDMX, México",
+    year: 2026,
+    description: "Mano de obra especializada en fijación de lambrines de encino nacional de suelo a techo con perfilería oculta.",
+    imageUrl: "input_file_18.png",
+    aspect: "landscape"
+  },
+  {
+    id: "g-19",
+    title: "Detalles en Lambrín de Fachada",
+    category: "Remodelaciones",
+    location: "Querétaro, Qro.",
+    year: 2025,
+    description: "Renovación exterior conjugando herrería texturizada negra mate, tableros de madera listonada e iluminación puntual led.",
+    imageUrl: "input_file_19.png",
     aspect: "portrait"
   }
 ];
@@ -353,10 +434,11 @@ const ImageGallery: React.FC = () => {
               >
                 <div className={`relative w-full ${aspectClass} overflow-hidden`}>
                   <img
-                    src={item.imageUrl}
+                    src={getImageUrl(item.imageUrl)}
                     alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
                     loading="lazy"
+                    onError={(e) => handleImageError(e, item.category)}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6">
                     <div className="transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
@@ -507,7 +589,7 @@ const ImageGallery: React.FC = () => {
               >
                 <motion.img
                   key={activeProject.id}
-                  src={activeProject.imageUrl}
+                  src={getImageUrl(activeProject.imageUrl)}
                   alt={activeProject.title}
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ 
@@ -518,6 +600,7 @@ const ImageGallery: React.FC = () => {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4 }}
                   className="w-full h-full object-cover select-none pointer-events-none"
+                  onError={(e) => handleImageError(e, activeProject.category)}
                 />
 
                 {/* Zoom tips overlay */}
@@ -581,7 +664,12 @@ const ImageGallery: React.FC = () => {
                           : 'border-transparent opacity-40 hover:opacity-100'
                       }`}
                     >
-                      <img src={thumb.imageUrl} alt={thumb.title} className="w-full h-full object-cover" />
+                      <img 
+                        src={getImageUrl(thumb.imageUrl)} 
+                        alt={thumb.title} 
+                        className="w-full h-full object-cover" 
+                        onError={(e) => handleImageError(e, thumb.category)}
+                      />
                     </button>
                   ))}
                 </div>

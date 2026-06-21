@@ -81,12 +81,7 @@ const ProyectosPage: React.FC = () => {
                   />
                 )}
                 <FolderKanban className="w-4 h-4 relative z-10" />
-                <span className="relative z-10 uppercase tracking-wider">Fichas de Proyectos</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+                
 
       {/* Main Portfolio Grid */}
       <section className="py-16 bg-white min-h-[40vh]">

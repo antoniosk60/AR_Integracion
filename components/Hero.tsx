@@ -143,10 +143,33 @@ const Hero: React.FC = () => {
       </motion.div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
-        <span className="text-white/40 text-[10px] uppercase tracking-[0.3em] font-bold">Scroll</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-amber-500 to-transparent"></div>
-      </div>
+      <button 
+        onClick={() => {
+          const element = document.getElementById('servicios');
+          if (element) {
+            window.scrollTo({
+              top: element.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 group cursor-pointer text-white/40 hover:text-amber-500 transition-colors focus:outline-none"
+      >
+        <span className="text-[9px] uppercase tracking-[0.3em] font-black font-sans group-hover:text-amber-500 transition-colors">Scroll</span>
+        <div className="w-5 h-8 border border-white/30 group-hover:border-amber-500/50 rounded-full p-1 flex justify-center items-start transition-colors duration-300">
+          <motion.div 
+            animate={{
+              y: [0, 8, 0],
+            }}
+            transition={{
+              duration: 1.6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="w-1 h-1.5 bg-amber-500 rounded-full"
+          />
+        </div>
+      </button>
     </div>
   );
 };

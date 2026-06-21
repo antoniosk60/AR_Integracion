@@ -1,32 +1,32 @@
 import { AnimatePresence, motion } from 'framer-motion';
 
 {/* Mobile Menu */}
-<AnimatePresence>
+<AnimatePresence mode="wait">
   {isOpen && (
     <motion.div
       key="mobile-menu"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="md:hidden fixed inset-0 z-[60]"
+      transition={{ duration: 0.25 }}
+      className="fixed inset-0 z-[60] md:hidden"
     >
       {/* Backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.25 }}
         className="absolute inset-0 bg-slate-950/60 backdrop-blur-md"
         onClick={() => setIsOpen(false)}
       />
 
-      {/* Menu Content */}
+      {/* Panel lateral */}
       <motion.div
         initial={{ x: '100%' }}
         animate={{ x: 0 }}
         exit={{ x: '100%' }}
-        transition={{ duration: 0.4, ease: 'easeInOut' }}
+        transition={{ duration: 0.35, ease: 'easeInOut' }}
         className="absolute right-0 top-0 bottom-0 w-[80%] max-w-sm bg-white shadow-2xl flex flex-col"
       >
         <div className="p-6 flex justify-between items-center border-b border-slate-100">
@@ -43,6 +43,7 @@ import { AnimatePresence, motion } from 'framer-motion';
           </button>
         </div>
 
+        {/* Links con animación */}
         <div className="flex-1 overflow-y-auto py-8 px-6 space-y-2">
           {navLinks.map((link, index) => (
             <motion.div
@@ -67,6 +68,7 @@ import { AnimatePresence, motion } from 'framer-motion';
           ))}
         </div>
 
+        {/* Footer */}
         <div className="p-8 border-t border-slate-100">
           <Link
             to="/contacto"

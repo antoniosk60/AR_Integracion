@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Project, getImageUrl } from '../types';
+import { Project } from '../types';
 
 const GITHUB_IMG_BASE = 'https://raw.githubusercontent.com/antoniosk60/IMGAR/main/img/';
 
@@ -236,7 +236,7 @@ const Portfolio: React.FC = () => {
           >
             <div className="aspect-[16/11] overflow-hidden relative">
               <img 
-                src={getImageUrl(project.imageUrl)} 
+                src={project.imageUrl} 
                 alt={project.title}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800' }}
@@ -281,7 +281,7 @@ const Portfolio: React.FC = () => {
 
             {/* Media Side */}
             <div className="lg:w-7/12 relative h-[40vh] lg:h-auto overflow-hidden bg-slate-100">
-              <img src={getImageUrl(selectedProject.imageUrl)} alt={selectedProject.title} className="w-full h-full object-cover" />
+              <img src={selectedProject.imageUrl} alt={selectedProject.title} className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-r from-slate-950/20 to-transparent pointer-events-none"></div>
             </div>
 

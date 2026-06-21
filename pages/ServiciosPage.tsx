@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Zap, Construction, Paintbrush, ShieldCheck, ChevronRight, CheckCircle2 } from 'lucide-react';
@@ -71,6 +72,13 @@ const ServiciosPage: React.FC = () => {
 
   return (
     <div className="pt-24 pb-16 sm:pb-24">
+      <Helmet>
+        <title>Nuestros Servicios Especializados | Grupo AR</title>
+        <meta name="description" content="Descubre nuestros servicios de Ingeniería Eléctrica de alta tensión, Obra Civil, Remodelación Premium e Impermeabilización del más alto nivel técnico." />
+        <meta property="og:title" content="Nuestros Servicios Especializados | Grupo AR" />
+        <meta property="og:description" content="Ofrecemos soluciones integrales de diseño, ingeniería, construcción y mantenimiento con certificaciones y garantías garantizadas." />
+      </Helmet>
+
       {/* Hero Section */}
       <section className="relative bg-slate-950 text-white py-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-slate-950 to-slate-950 opacity-90"></div>

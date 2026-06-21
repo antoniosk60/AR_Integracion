@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Star, MessageSquarePlus, Quote, CheckCircle, User } from 'lucide-react';
 
@@ -90,6 +91,13 @@ const TestimoniosPage: React.FC = () => {
 
   return (
     <div className="pt-24 pb-16 sm:pb-24 bg-slate-50 min-h-screen">
+      <Helmet>
+        <title>Testimonios y Reseñas de Clientes | Grupo AR</title>
+        <meta name="description" content="Opiniones honestas de ingenieros, arquitectos y clientes sobre las obras, proyectos eléctricos, impermeabilizaciones e instalaciones de Grupo AR." />
+        <meta property="og:title" content="Testimonios y Reseñas de Clientes | Grupo AR" />
+        <meta property="og:description" content="Conoce la experiencia de trabajar con nosotros. Calidad, garantía y precisión técnica avalada por nuestros clientes." />
+      </Helmet>
+
       {/* Hero Section */}
       <section className="relative bg-slate-950 text-white py-16 sm:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-slate-950 to-slate-950 opacity-90"></div>

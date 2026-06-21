@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Mail, Phone, MapPin, Send, Calculator, HelpCircle, CheckCircle } from 'lucide-react';
 
@@ -71,6 +72,13 @@ const ContactoPage: React.FC = () => {
 
   return (
     <div className="pt-24 pb-16 sm:pb-24 bg-slate-50 min-h-screen">
+      <Helmet>
+        <title>Contacto y Cotizaciones de Obra | Grupo AR</title>
+        <meta name="description" content="Ponte en contacto con Grupo AR. Utiliza nuestra calculadora de presupuesto estimada o envíanos un mensaje para agendar asesoría técnica personalizada." />
+        <meta property="og:title" content="Contacto y Cotizaciones de Obra | Grupo AR" />
+        <meta property="og:description" content="Inicia la cotización de tu obra residencial o industrial hoy mismo. Respuestas rápidas y asesoramiento profesional calificado." />
+      </Helmet>
+
       {/* Hero Section */}
       <section className="relative bg-slate-950 text-white py-16 sm:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-slate-950 to-slate-950 opacity-90"></div>

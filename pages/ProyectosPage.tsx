@@ -67,21 +67,7 @@ const ProyectosPage: React.FC = () => {
                 <span className="relative z-10 uppercase tracking-wider">Galería de Inspección</span>
               </button>
 
-              <button
-                onClick={() => setActiveTab('portfolio')}
-                className={`flex items-center gap-2.5 px-6 py-3 rounded-xl text-xs font-black transition-all duration-300 relative ${
-                  activeTab === 'portfolio' ? 'text-slate-900' : 'text-slate-300 hover:text-white'
-                }`}
-              >
-                {activeTab === 'portfolio' && (
-                  <motion.div
-                    layoutId="activeSubTabBg"
-                    transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-                    className="absolute inset-0 bg-amber-500 rounded-xl"
-                  />
-                )}
-                <FolderKanban className="w-4 h-4 relative z-10" />
-                
+              
 
       {/* Main Portfolio Grid */}
       <section className="py-16 bg-white min-h-[40vh]">

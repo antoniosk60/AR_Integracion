@@ -24,3 +24,11 @@ export interface Message {
   role: 'user' | 'model';
   text: string;
 }
+
+export const getImageUrl = (url: string): string => {
+  if (!url) return '';
+  if (url.startsWith('input_file_')) {
+    return `https://raw.githubusercontent.com/antoniosk60/IMGAR/main/img/${url}`;
+  }
+  return url;
+};

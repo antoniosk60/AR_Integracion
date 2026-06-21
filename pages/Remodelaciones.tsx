@@ -3,6 +3,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
 import { Home, CheckCircle2, ArrowRight } from 'lucide-react';
+import { getImageUrl } from '../types';
 
 const Remodelaciones: React.FC = () => {
   const gallery = [
@@ -46,7 +47,7 @@ const Remodelaciones: React.FC = () => {
       <section className="relative h-[60vh] min-h-[400px] flex items-center overflow-hidden bg-slate-950">
         <div className="absolute inset-0 z-0">
           <img 
-            src="input_file_15.png" 
+            src={getImageUrl("input_file_15.png")} 
             className="w-full h-full object-cover opacity-40"
             alt="Remodelaciones"
           />
@@ -141,7 +142,7 @@ const Remodelaciones: React.FC = () => {
               >
                 <div className="aspect-square overflow-hidden">
                   <img 
-                    src={item.url} 
+                    src={getImageUrl(item.url)} 
                     alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />

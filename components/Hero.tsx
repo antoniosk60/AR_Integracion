@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0">
         <motion.div 
           style={{ 
-            backgroundImage: `url('input_file_0.png')`,
+            backgroundImage: `url('${GITHUB_IMG_BASE}input_file_0.png')`,
             y: backgroundY
           }}
           className="absolute inset-0 bg-cover bg-center opacity-60 scale-110"
@@ -122,7 +122,7 @@ const Hero: React.FC = () => {
               <div className="relative glass-card p-8 rounded-3xl border border-white/20">
                 <div className="aspect-[4/5] rounded-2xl overflow-hidden mb-6">
                   <img 
-                    src="input_file_15.png" 
+                    src={`${GITHUB_IMG_BASE}input_file_15.png`} 
                     className="w-full h-full object-cover"
                     alt="Ingeniería Civil"
                     onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800' }}

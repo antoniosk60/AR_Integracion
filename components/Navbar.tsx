@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { motion } from 'motion/react';
 
 interface NavbarProps {
   isScrolled: boolean;
@@ -63,12 +64,12 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
               ))}
               
               {/* Services Dropdown (Simplified for this example) */}
-              <div className="relative group/dropdown px-4 py-2">
+              <div className="relative group px-4 py-2">
                 <button className={`text-sm font-bold transition-all duration-300 flex items-center gap-1 ${isScrolled || location.pathname !== '/' ? 'text-slate-700' : 'text-white'}`}>
                   Especialidades
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/></svg>
                 </button>
-                <div className="absolute top-full left-0 w-64 bg-white shadow-2xl rounded-2xl p-4 opacity-0 translate-y-2 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:translate-y-0 group-hover/dropdown:visible transition-all duration-300 border border-slate-100">
+                <div className="absolute top-full left-0 w-64 bg-white shadow-2xl rounded-2xl p-4 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 border border-slate-100">
                   {serviceLinks.map((service) => (
                     <Link
                       key={service.name}
@@ -95,15 +96,45 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
-              className={`p-2 rounded-xl transition-colors ${isScrolled ? 'text-slate-900 hover:bg-slate-100' : 'text-white hover:bg-white/10'}`}
+              className={`p-2 rounded-xl transition-all duration-300 active:scale-90 ${isScrolled || location.pathname !== '/' ? 'text-slate-900 hover:bg-slate-100' : 'text-white hover:bg-white/10'}`}
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {isOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
+              <motion.svg 
+                className="h-6 w-6" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                animate={isOpen ? "open" : "closed"}
+              >
+                <motion.path
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  variants={{
+                    closed: { d: "M 4 6 L 20 6" },
+                    open: { d: "M 6 18 L 18 6" }
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                />
+                <motion.path
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  variants={{
+                    closed: { d: "M 4 12 L 20 12", opacity: 1 },
+                    open: { d: "M 4 12 L 20 12", opacity: 0 }
+                  }}
+                  transition={{ duration: 0.2 }}
+                />
+                <motion.path
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  variants={{
+                    closed: { d: "M 4 18 L 20 18" },
+                    open: { d: "M 6 6 L 18 18" }
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                />
+              </motion.svg>
             </button>
           </div>
         </div>

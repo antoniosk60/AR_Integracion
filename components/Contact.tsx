@@ -6,7 +6,7 @@ const Contact: React.FC = () => {
     name: '',
     email: '',
     phone: '',
-    type: 'Electricidad Professional',
+    type: 'Electricidad Profesional',
     message: ''
   });
   
@@ -68,7 +68,7 @@ const Contact: React.FC = () => {
     // Simulate API call or form submission processing
     setTimeout(() => {
       setStatus('success');
-      setFormData({ name: '', email: '', phone: '', type: 'Electricidad Professional', message: '' });
+      setFormData({ name: '', email: '', phone: '', type: 'Electricidad Profesional', message: '' });
       setErrors({});
       setTimeout(() => setStatus('idle'), 8000);
     }, 1500);
@@ -102,13 +102,13 @@ const Contact: React.FC = () => {
         {/* Contact Info */}
         <div className="lg:sticky lg:top-32 self-start space-y-8 sm:space-y-12">
           <div>
-            <h2 className="text-amber-500 font-bold uppercase tracking-[0.3em] text-[10px] sm:text-xs mb-4">Hablemos de tu obra</h2>
-            <p className="text-4xl sm:text-5xl md:text-6xl font-black font-display text-slate-900 tracking-tight leading-[1.1]">
+            <span className="block text-amber-500 font-bold uppercase tracking-[0.3em] text-[10px] sm:text-xs mb-4">Hablemos de tu obra</span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black font-display text-slate-900 tracking-tight leading-[1.1]">
               Inicia tu <br />
               <span className="text-gradient">Proyecto</span> hoy
-            </p>
+            </h2>
             <p className="mt-6 sm:mt-8 text-slate-600 text-base sm:text-lg leading-relaxed max-w-md">
-              Estamos listos para llevar tus ideas al siguiente nivel con rigor técnico y excelencia operativa.
+              Estamos listos para llevar tus ideas al siguiente nivel con rigor técnico y excelencia operativa. <span className="text-amber-500 font-bold text-xs block mt-3">* Campos marcados con asterisco son obligatorios</span>
             </p>
           </div>
 
@@ -205,7 +205,7 @@ const Contact: React.FC = () => {
                       onChange={handleChange} 
                       className="w-full px-6 py-3.5 sm:py-4 rounded-2xl border border-slate-100 focus:border-amber-500 focus:ring-4 focus:ring-amber-500/10 outline-none transition-all bg-slate-50/50 font-bold text-slate-700 text-sm sm:text-base"
                     >
-                      <option>Electricidad Professional</option>
+                      <option>Electricidad Profesional</option>
                       <option>Telecomunicaciones</option>
                       <option>Remodelaciones</option>
                       <option>Impermeabilización</option>

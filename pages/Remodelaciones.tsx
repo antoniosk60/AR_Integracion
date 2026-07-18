@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Home, CheckCircle2, ArrowRight } from 'lucide-react';
 import { getImageUrl, handleImageError } from '../types';
@@ -50,6 +51,7 @@ const Remodelaciones: React.FC = () => {
             src={getImageUrl("input_file_15.png")} 
             className="w-full h-full object-cover opacity-40"
             alt="Remodelaciones"
+            referrerPolicy="no-referrer"
             onError={(e) => handleImageError(e, 'Remodelaciones')}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/40 to-slate-950"></div>
@@ -111,13 +113,13 @@ const Remodelaciones: React.FC = () => {
               <p className="text-slate-500 text-center mb-8">
                 Cuéntanos tu idea y nosotros nos encargamos de todo el proceso, desde el diseño conceptual hasta la entrega final.
               </p>
-              <a 
-                href="/#contacto" 
+              <Link 
+                to="/#contacto" 
                 className="flex items-center justify-center gap-3 bg-amber-500 text-white px-8 py-4 rounded-2xl font-black hover:bg-amber-600 transition-all shadow-xl shadow-amber-500/20 group"
               >
                 Cotizar Proyecto
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -127,8 +129,8 @@ const Remodelaciones: React.FC = () => {
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-amber-500 font-bold uppercase tracking-[0.3em] text-xs mb-4">Portafolio</h2>
-            <p className="text-4xl sm:text-5xl font-black font-display text-slate-900">Galería de <span className="text-gradient">Remodelaciones</span></p>
+            <span className="block text-amber-500 font-bold uppercase tracking-[0.3em] text-xs mb-4">Portafolio</span>
+            <h2 className="text-4xl sm:text-5xl font-black font-display text-slate-900">Galería de <span className="text-gradient">Remodelaciones</span></h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -146,6 +148,7 @@ const Remodelaciones: React.FC = () => {
                     src={getImageUrl(item.url)} 
                     alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    referrerPolicy="no-referrer"
                     onError={(e) => handleImageError(e, 'Remodelaciones')}
                   />
                 </div>

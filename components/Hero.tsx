@@ -155,7 +155,7 @@ const Hero: React.FC = () => {
         }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 group cursor-pointer text-white/40 hover:text-amber-500 transition-colors focus:outline-none"
       >
-        <span className="text-[9px] uppercase tracking-[0.3em] font-black font-sans group-hover:text-amber-500 transition-colors">Scroll</span>
+        <span className="text-[9px] uppercase tracking-[0.3em] font-black font-sans group-hover:text-amber-500 transition-colors">Explorar</span>
         <div className="w-5 h-8 border border-white/30 group-hover:border-amber-500/50 rounded-full p-1 flex justify-center items-start transition-colors duration-300">
           <motion.div 
             animate={{

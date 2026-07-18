@@ -55,8 +55,8 @@ const Services: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12 sm:mb-20">
-        <h2 className="text-amber-500 font-bold uppercase tracking-[0.3em] text-[10px] sm:text-xs mb-4">Especialidades Técnicas</h2>
-        <p className="text-4xl sm:text-5xl md:text-6xl font-black font-display text-slate-900 tracking-tight">Soluciones <span className="text-gradient">Integrales</span></p>
+        <span className="block text-amber-500 font-bold uppercase tracking-[0.3em] text-[10px] sm:text-xs mb-4">Especialidades Técnicas</span>
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-black font-display text-slate-900 tracking-tight">Soluciones <span className="text-gradient">Integrales</span></h2>
         <p className="mt-4 sm:mt-6 text-slate-500 max-w-2xl mx-auto text-base sm:text-lg">Ingeniería aplicada para el sector residencial, comercial e industrial en México.</p>
       </div>
 
@@ -91,8 +91,8 @@ const Services: React.FC = () => {
         <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-[100px]"></div>
         <div className="relative z-10 grid lg:grid-cols-2 gap-12 sm:gap-20 items-center">
           <div>
-            <h3 className="text-amber-500 font-black uppercase tracking-[0.3em] text-[10px] sm:text-xs mb-6">Nuestra Metodología</h3>
-            <p className="text-3xl sm:text-4xl md:text-5xl font-black font-display mb-6 sm:mb-8 leading-tight">Diseño, Ejecución y <span className="text-gradient">Certificación</span></p>
+            <span className="block text-amber-500 font-black uppercase tracking-[0.3em] text-[10px] sm:text-xs mb-6">Nuestra Metodología</span>
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black font-display mb-6 sm:mb-8 leading-tight">Diseño, Ejecución y <span className="text-gradient">Certificación</span></h3>
             <p className="text-slate-400 text-base sm:text-lg leading-relaxed mb-8 sm:mb-10">
               No solo construimos; integramos soluciones técnicas que cumplen con los más altos estándares internacionales de seguridad y eficiencia.
             </p>

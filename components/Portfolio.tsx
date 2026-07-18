@@ -201,8 +201,8 @@ const Portfolio: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-10">
         <div className="max-w-2xl">
-          <h2 className="text-amber-500 font-bold uppercase tracking-[0.3em] text-xs mb-4">Nuestro Historial</h2>
-          <p className="text-5xl md:text-6xl font-black font-display text-slate-900 tracking-tight">Proyectos de <span className="text-gradient">Éxito</span></p>
+          <span className="block text-amber-500 font-bold uppercase tracking-[0.3em] text-xs mb-4">Nuestro Historial</span>
+          <h2 className="text-5xl md:text-6xl font-black font-display text-slate-900 tracking-tight">Proyectos de <span className="text-gradient">Éxito</span></h2>
         </div>
         <div className="flex flex-wrap gap-2 p-1.5 bg-slate-100 rounded-2xl">
           {filters.map(filter => (

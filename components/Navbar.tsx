@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { motion } from 'motion/react';
 
 interface NavbarProps {
   isScrolled: boolean;
@@ -45,8 +46,8 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-1 lg:space-x-4">
+          <div className="hidden lg:block">
+            <div className="ml-10 flex items-baseline space-x-1 lg:space-x-2 xl:space-x-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -61,14 +62,14 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
                   <span className={`absolute bottom-0 left-4 right-4 h-0.5 bg-amber-500 transition-transform duration-300 origin-left ${location.pathname === link.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
                 </Link>
               ))}
-
+              
               {/* Services Dropdown (Simplified for this example) */}
-              <div className="relative group/dropdown px-4 py-2">
+              <div className="relative group px-4 py-2">
                 <button className={`text-sm font-bold transition-all duration-300 flex items-center gap-1 ${isScrolled || location.pathname !== '/' ? 'text-slate-700' : 'text-white'}`}>
                   Especialidades
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/></svg>
                 </button>
-                <div className="absolute top-full left-0 w-64 bg-white shadow-2xl rounded-2xl p-4 opacity-0 translate-y-2 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:translate-y-0 group-hover/dropdown:visible transition-all duration-300 border border-slate-100">
+                <div className="absolute top-full left-0 w-64 bg-white shadow-2xl rounded-2xl p-4 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 border border-slate-100">
                   {serviceLinks.map((service) => (
                     <Link
                       key={service.name}
@@ -91,37 +92,67 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
           </div>
 
           {/* Mobile Button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
-              className={`p-2 rounded-xl transition-colors ${isScrolled ? 'text-slate-900 hover:bg-slate-100' : 'text-white hover:bg-white/10'}`}
+              className={`p-2 rounded-xl transition-all duration-300 active:scale-90 ${isScrolled || location.pathname !== '/' ? 'text-slate-900 hover:bg-slate-100' : 'text-white hover:bg-white/10'}`}
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {isOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
+              <motion.svg 
+                className="h-6 w-6" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                animate={isOpen ? "open" : "closed"}
+              >
+                <motion.path
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  variants={{
+                    closed: { d: "M 4 6 L 20 6" },
+                    open: { d: "M 6 18 L 18 6" }
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                />
+                <motion.path
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  variants={{
+                    closed: { d: "M 4 12 L 20 12", opacity: 1 },
+                    open: { d: "M 4 12 L 20 12", opacity: 0 }
+                  }}
+                  transition={{ duration: 0.2 }}
+                />
+                <motion.path
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  variants={{
+                    closed: { d: "M 4 18 L 20 18" },
+                    open: { d: "M 6 6 L 18 18" }
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                />
+              </motion.svg>
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden fixed inset-0 z-[60] transition-all duration-500 ${isOpen ? 'visible' : 'invisible pointer-events-none'}`}>
+      <div className={`lg:hidden fixed inset-0 z-[60] transition-all duration-500 ${isOpen ? 'visible' : 'invisible pointer-events-none'}`}>
         {/* Backdrop */}
         <div 
           className={`absolute inset-0 bg-slate-950/60 backdrop-blur-md transition-opacity duration-500 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
           onClick={() => setIsOpen(false)}
         ></div>
-
+        
         {/* Menu Content */}
         <div className={`absolute right-0 top-0 bottom-0 w-[80%] max-w-sm bg-white shadow-2xl transition-transform duration-500 ease-out transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} flex flex-col`}>
           <div className="p-6 flex justify-between items-center border-b border-slate-100">
             <span className="text-xl font-black font-display tracking-tighter text-slate-900">
-              MENU
+              MENÚ
             </span>
             <button
               onClick={() => setIsOpen(false)}
@@ -132,7 +163,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
               </svg>
             </button>
           </div>
-
+          
           <div className="flex-1 overflow-y-auto py-8 px-6 space-y-2">
             {navLinks.map((link, index) => (
               <Link
@@ -149,7 +180,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
                 {link.name}
               </Link>
             ))}
-
+            
             <div className="pt-4 pb-2 px-6">
               <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Especialidades</p>
               <div className="grid grid-cols-1 gap-2">
@@ -166,7 +197,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
               </div>
             </div>
           </div>
-
+          
           <div className="p-8 border-t border-slate-100">
             <Link
               to="/contacto"

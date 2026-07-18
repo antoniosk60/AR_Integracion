@@ -41,8 +41,8 @@ const Testimonials: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12 sm:mb-20">
-        <h2 className="text-amber-500 font-bold uppercase tracking-[0.3em] text-[10px] sm:text-xs mb-4">Confianza de Nuestros Socios</h2>
-        <p className="text-4xl sm:text-5xl md:text-6xl font-black font-display text-slate-900 tracking-tight">Voz de la <span className="text-gradient">Experiencia</span></p>
+        <span className="block text-amber-500 font-bold uppercase tracking-[0.3em] text-[10px] sm:text-xs mb-4">Confianza de Nuestros Socios</span>
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-black font-display text-slate-900 tracking-tight">Voz de la <span className="text-gradient">Experiencia</span></h2>
         <p className="mt-4 sm:mt-6 text-slate-500 max-w-2xl mx-auto text-base sm:text-lg">Lo que dicen los líderes de la industria sobre nuestro compromiso con la excelencia.</p>
       </div>
 
@@ -88,7 +88,7 @@ const Testimonials: React.FC = () => {
                   )}
                 </div>
                 <div>
-                  <h4 className="text-slate-900 font-black text-lg leading-tight">{testimonial.name}</h4>
+                  <h3 className="text-slate-900 font-black text-lg leading-tight">{testimonial.name}</h3>
                   {testimonial.company && (
                     <p className="text-amber-600 text-xs font-bold uppercase tracking-widest mt-1">{testimonial.company}</p>
                   )}
